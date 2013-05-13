@@ -1,19 +1,18 @@
 ﻿using System;
-using AsbaBank.Domain;
 using AsbaBank.Domain.Models;
 
 namespace AsbaBank.Presentation.Shell.Commands.Account
 {
     public class AddAccount : ICommand
     {
-        private readonly int ClientId;
+        private readonly int clientId;
 
         public AddAccount(int clientId)
         {
             if (clientId <= 0)
                 throw new ArgumentException("Please provide a valid client id.");
 
-            this.ClientId = clientId;
+            this.clientId = clientId;
         }
 
         public void Execute()
@@ -24,13 +23,13 @@ namespace AsbaBank.Presentation.Shell.Commands.Account
 
             try
             {
-                var client = clientRepository.Get(ClientId);
+                var client = clientRepository.Get(clientId);
                 if (client == null)
                 {
-                    throw new ArgumentException(string.Format("A Client with ID {0}, does not exist", ClientId));
+                    throw new ArgumentException(string.Format("A Client with ID {0}, does not exist", clientId));
                 }
 
-                var account = Domain.Models.Account.OpenAccount(ClientId);
+                var account = Domain.Models.Account.OpenAccount(clientId);
                 accountRepository.Add(account);
                 unitOfWork.Commit();
 
