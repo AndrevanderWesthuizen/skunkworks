@@ -38,6 +38,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -70,7 +71,7 @@
       <Name>AsbaBank.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\AsbaBank.Infrastructure\AsbaBank.Infrastructure.csproj">
-      <Project>{88336594-86D7-438D-983F-7828F2765E41}</Project>
+      <Project>{88336594-86d7-438d-983f-7828f2765e41}</Project>
       <Name>AsbaBank.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>

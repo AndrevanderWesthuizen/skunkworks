@@ -41,6 +41,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -49,12 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationContext.cs" />
+    <Compile Include="AsbaBankContext.cs" />
     <Compile Include="ConsoleWindowLogger.cs" />
     <Compile Include="GenericRepository.cs" />
     <Compile Include="GenericUnitOfWork.cs" />
+    <Compile Include="JsonSerializer.cs" />
     <Compile Include="LocalCommandPublisher.cs" />
-    <Compile Include="Infrastructure.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CommandScripts\ScriptBase.cs" />
     <Compile Include="CommandScripts\ScriptPlayer.cs" />
@@ -67,6 +68,10 @@
     <ProjectReference Include="..\AsbaBank.Core\AsbaBank.Core.csproj">
       <Project>{CBF7366C-BA37-4E0A-A523-D948A9640D5B}</Project>
       <Name>AsbaBank.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AsbaBank.DataModel\AsbaBank.DataModel.csproj">
+      <Project>{9c8a1e0f-b70d-4db8-a5f4-d0cc1007f45a}</Project>
+      <Name>AsbaBank.DataModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\AsbaBank.Domain\AsbaBank.Domain.csproj">
       <Project>{9b6645ff-6e28-4f3e-a007-7aca766bd366}</Project>

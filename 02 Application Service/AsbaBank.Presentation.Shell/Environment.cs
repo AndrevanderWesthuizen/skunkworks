@@ -66,9 +66,20 @@ namespace AsbaBank.Presentation.Shell
 
         public static IPublishCommands GetCommandPublisher()
         {
-            var dbcontext = new ApplicationContext();
+            AsbaBankContext context = new AsbaBankContext("ASBA");
+
+            if (!context.Database.Exists())
+            {
+                context.Database.Create();
+            }
+            else
+            {
+                context.Database.Delete();
+
+            }
+            
             var commandPublisher = new LocalCommandPublisher();
-            var unitOfWork = new GenericUnitOfWork(dbcontext);
+            var unitOfWork = new GenericUnitOfWork(context);
 
             commandPublisher.Subscribe(new ClientService(unitOfWork, Logger));
 

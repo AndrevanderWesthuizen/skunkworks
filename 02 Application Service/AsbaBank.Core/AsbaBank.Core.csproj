@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IEntity.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Commands\IHandleCommand.cs" />
     <Compile Include="IDbContext.cs" />

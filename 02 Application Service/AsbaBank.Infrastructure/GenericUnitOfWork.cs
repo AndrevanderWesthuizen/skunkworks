@@ -1,13 +1,16 @@
 ﻿using System;
+using System.Data.Entity;
 using AsbaBank.Core;
+using AsbaBank.DataModel;
 
 namespace AsbaBank.Infrastructure
 {
     public class GenericUnitOfWork : IUnitOfWork
     {
-        private readonly IDbContext context;
+        private DbContext context;
+        private bool isDisposed;
 
-        public GenericUnitOfWork(IDbContext context)
+        public GenericUnitOfWork(DbContext context)
         {
             this.context = context;
         }
@@ -19,12 +22,24 @@ namespace AsbaBank.Infrastructure
 
         public void Rollback()
         {
-            throw new NotImplementedException();
+            context.Dispose();
+            context = new AsbaContext("ASBA");
         }
 
         public IRepository<TEntity> GetRepository<TEntity>() where TEntity : class
         {
-            return new GenericRepository<TEntity>(context);
+            return new EntityFrameworkRepository<TEntity>(context.Set<TEntity>());
+        }
+
+        public void Dispose()
+        {
+            if (isDisposed)
+            {
+                return;
+            }
+
+            isDisposed = true;
+            context.Dispose();
         }
     }
 }

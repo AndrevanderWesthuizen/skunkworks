@@ -2,29 +2,24 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Runtime.Serialization;
 
 namespace AsbaBank.Domain.Models
 {
-    [DataContract]
     public class Account
     {
-        [Key, DataMember] 
-        public int Id { get; protected set; }
-        [DataMember] 
-        public int ClientId { get; protected set; }
-        [DataMember] 
-        public string AccountNumber { get; protected set; }
-        [DataMember] 
-        public bool Closed { get; protected set; }
-        [DataMember]
-        public ICollection<Transaction> Ledger { get; set; }  
-        [DataMember]
-        public ICollection<BankCard> BankCards { get; set; }  
+        [Key]
+        public virtual int Id { get; protected set; }
+        public virtual string AccountNumber { get; protected set; }
+        public virtual bool Closed { get; protected set; }
+        public virtual ICollection<Transaction> Ledger { get; set; }
+        public virtual ICollection<BankCard> BankCards { get; set; }
+
+        public virtual Client Client { get; protected set; }
+        public virtual int ClientId { get; protected set; }
 
         protected Account()
         {
-            //here for the deserializer
+            //here for entity framework
         }
 
         protected Account(int clientId)
@@ -81,7 +76,7 @@ namespace AsbaBank.Domain.Models
         public decimal GetAccountBalance()
         {
             return Ledger.Sum(ledger => ledger.Amount);
-        }        
+        }
 
         public void Close(int accountId)
         {
@@ -107,7 +102,7 @@ namespace AsbaBank.Domain.Models
                 throw new ValidationException("An account may only have one active bank card at a time.");
             }
 
-            BankCards.Add(new BankCard(BankCards.Count + 1, Id));
+            BankCards.Add(new BankCard(Id));
         }
 
         public void StopBankCard()
