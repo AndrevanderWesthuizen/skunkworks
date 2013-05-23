@@ -75,6 +75,7 @@ namespace AsbaBank.Presentation.Shell
             else
             {
                 context.Database.Delete();
+                context.Database.Create();
 
             }
             
