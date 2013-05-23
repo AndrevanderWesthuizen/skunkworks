@@ -5,12 +5,12 @@ using AsbaBank.DataModel;
 
 namespace AsbaBank.Infrastructure
 {
-    public class GenericUnitOfWork : IUnitOfWork
+    public class EntityFrameworkUnitOfWork : IUnitOfWork
     {
         private DbContext context;
         private bool isDisposed;
 
-        public GenericUnitOfWork(DbContext context)
+        public EntityFrameworkUnitOfWork(DbContext context)
         {
             this.context = context;
         }

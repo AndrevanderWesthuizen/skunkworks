@@ -79,7 +79,7 @@ namespace AsbaBank.Presentation.Shell
             }
             
             var commandPublisher = new LocalCommandPublisher();
-            var unitOfWork = new GenericUnitOfWork(context);
+            var unitOfWork = new EntityFrameworkUnitOfWork(context);
 
             commandPublisher.Subscribe(new ClientService(unitOfWork, Logger));
 

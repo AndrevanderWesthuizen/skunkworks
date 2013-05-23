@@ -52,8 +52,8 @@
   <ItemGroup>
     <Compile Include="AsbaBankContext.cs" />
     <Compile Include="ConsoleWindowLogger.cs" />
-    <Compile Include="GenericRepository.cs" />
-    <Compile Include="GenericUnitOfWork.cs" />
+    <Compile Include="EntityFrameworkRepository.cs" />
+    <Compile Include="EntityFrameworkUnitOfWork.cs" />
     <Compile Include="JsonSerializer.cs" />
     <Compile Include="LocalCommandPublisher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
